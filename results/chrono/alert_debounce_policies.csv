@@ -1,0 +1,5 @@
+policy,red_episodes,reduction_vs_raw_pct,Ev1 (10 Nov),Ev2 (18-19 Nov),Ev3 (24-25 Jan),max_confirmation_delay_min
+Raw single-sample RED,31,0.0,no raw RED,preserved,preserved,0.0
+"RED persistence, 2-of-3",18,41.93548387096774,no raw RED,preserved,preserved,2.0
+"RED persistence, 3-of-5",10,67.74193548387098,no raw RED,suppressed,preserved,4.0
+Adopted: 2-of-3 escalation + single-sample RED (30-min GREEN release),23,25.806451612903224,no raw RED,preserved,preserved,0.0

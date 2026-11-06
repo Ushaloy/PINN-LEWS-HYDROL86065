@@ -1,0 +1,21 @@
+ALERT-STREAM SUMMARY  (final main-run PIML; T_L per Eq. 17, causal)
+====================================================================
+analysed steps n              : 58,518 of 78,086
+monitored coverage           : 110.7 days
+FoS in analysed record       : min 1.590 | mean 1.694
+GREEN / YELLOW / RED (%)     : 99.66 / 0.23 / 0.11
+RED samples / YELLOW samples : 65 / 136
+non-capped T_L steps         : 1,580 (2.7% of record)
+median non-capped T_L        : 24.84 h
+minimum T_L                  : 0.25 h at 2026-09-09 09:30:00
+
+EPISODE COUNTS (analysed record)
+raw RED episodes             : 31
+raw non-GREEN episodes       : 69
+confirmed escalations        : 33
+debounced RED episodes       : 23
+
+SHOWCASE EVENTS (debounced policy)
+  Ev1 (10 Nov)    : no RED     raw RED runs (samples) = []
+  Ev2 (18-19 Nov) : RED issued raw RED runs (samples) = [2]
+  Ev3 (24-25 Jan) : RED issued raw RED runs (samples) = [3]

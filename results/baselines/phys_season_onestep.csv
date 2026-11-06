@@ -1,0 +1,2 @@
+split,model,test_rmse,test_r2,skill,test_rmse_raw,n,runtime_s
+season,Richards solver (onestep),0.0012088336404732954,0.999684967718243,-7.079442983837225e-06,0.0029758469224850817,36333,24.93083882331848

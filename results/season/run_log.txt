@@ -1,0 +1,254 @@
+
+===== session started 2026-11-04 01:39 | run d5w128tanhT_lp0.1_bc0_season_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season =====
+  date        2026-11-04 01:39
+  run         d5w128tanhT_lp0.1_bc0_season_fy  quick_test=False
+  python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+  numpy       2.4.6
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': False, 'bc_scen': False, 'lstm': False, 'transfer': False, 'alerts': False, 'arch_search': False, 'lam_ext': False}
+Device: cuda
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-04-01 | 36,005 measured points | θ 0.263–0.540 | rain 448 mm
+  val  : 2026-04-01 -> 2026-04-18 | 6,355 measured points | θ 0.204–0.267 | rain 1 mm
+  test : 2026-05-01 -> 2026-09-29 | 37,386 measured points | θ 0.221–0.502 | rain 366 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 9.1531e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+  Epoch  100 | Data 0.00008 | Phys(norm) 0.00001 | BC(norm) 0.02227 | IC 0.00002 | LBC 0.00000 | λ·Phys/Data ratio: 0.012 | Val(data) 0.00008 | Val(phys) 0.00001 | LR 5.00e-04
+  Epoch  200 | Data 0.00002 | Phys(norm) 0.00001 | BC(norm) 0.02236 | IC 0.00000 | LBC 0.00000 | λ·Phys/Data ratio: 0.061 | Val(data) 0.00001 | Val(phys) 0.00000 | LR 3.75e-04
+  Epoch  300 | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02237 | IC 0.00000 | LBC 0.00000 | λ·Phys/Data ratio: 0.015 | Val(data) 0.00000 | Val(phys) 0.00000 | LR 1.25e-04
+  Epoch  400 | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02225 | IC 0.00000 | LBC 0.00000 | λ·Phys/Data ratio: 0.013 | Val(data) 0.00001 | Val(phys) 0.00000 | LR 0.00e+00
+
+[Step 6b] Switching to L-BFGS fine-tuning (200 steps, full-batch) ...
+  [L-BFGS] Step  20/200 (epoch 420) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step  40/200 (epoch 440) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step  60/200 (epoch 460) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step  80/200 (epoch 480) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 100/200 (epoch 500) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 120/200 (epoch 520) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 140/200 (epoch 540) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 160/200 (epoch 560) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 180/200 (epoch 580) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 200/200 (epoch 600) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.02216 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+
+  [IC / lower-BC diagnostics] {'lbc_mode': 'free_drainage', 'ic_mode': 'sensor', 'z_bottom_m': 0.5, 'lbc_rms_dpsi_dz': 0.00277, 'lbc_mean_abs_dpsi_dz': 0.00132, 'lbc_mean_q_bottom_over_Ks': 0.02081, 'ic_theta0_sensor': 0.416, 'ic_mean_abs_err_sensor': 4e-05}
+
+  Best val: 0.00000  @ epoch 401
+
+[Model Save] Saving model ...
+  → Model saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/piml_slope_model_108_pinn_richards.pt
+
+█████████████████████████████████████████████████████████████████
+  Training the data-only baseline (same network, no physics terms)
+  LAM=0  LAM_ZVAR=0  — No physics constraint
+█████████████████████████████████████████████████████████████████
+  ML Baseline Parameters: 76,801
+  [ML] Epoch  100 | Data 0.00007 | Val 0.00008 | LR 5.00e-04
+  [ML] Epoch  200 | Data 0.00001 | Val 0.00001 | LR 3.75e-04
+  [ML] Epoch  300 | Data 0.00001 | Val 0.00000 | LR 1.25e-04
+  [ML] Epoch  400 | Data 0.00000 | Val 0.00000 | LR 0.00e+00
+
+[ML] Switching to L-BFGS fine-tuning (200 steps, full-batch, data-only) ...
+  [ML-LBFGS] Step  20/200 (epoch 420) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step  40/200 (epoch 440) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step  60/200 (epoch 460) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step  80/200 (epoch 480) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step 100/200 (epoch 500) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step 120/200 (epoch 520) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step 140/200 (epoch 540) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step 160/200 (epoch 560) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step 180/200 (epoch 580) | Data 0.00000 | Val 0.00000
+  [ML-LBFGS] Step 200/200 (epoch 600) | Data 0.00000 | Val 0.00000
+
+  [ML] Best val: 0.00000  @ epoch 401
+
+[Model Save] Saving ML baseline checkpoint ...
+  → ML Baseline checkpoint saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/piml_slope_model_108_ml_baseline_final.pt
+
+[Step 7a] Evaluate PIML ...
+  [PIML] Train R²: 0.9999  |  Val R²: 0.9938  |  Test R²: 0.9983
+  [PIML] Test RMSE: 0.00278 m³/m³
+
+[Step 7b] Evaluate ML Baseline ...
+  [ML]   Train R²: 0.9999  |  Val R²: 0.9944  |  Test R²: 0.9993
+  [ML]   Test RMSE: 0.00182 m³/m³
+  [Persist] Test R²: 0.9997  |  Test RMSE: 0.00121 m³/m³
+
+[Step 8] Van Genuchten θ→ψ (both models) ...
+  [PIML] θ outlier frac (<0.10): 0.0000
+  [PIML] |ψ| clipped range: [0.034, 1.513] m
+  [ML]   θ outlier frac (<0.10): 0.0000
+  [ML]   |ψ| clipped range: [0.034, 1.517] m
+
+  [PIML] FoS min=1.589  mean=1.741  FoS<1=0
+  [ML]   FoS min=1.588  mean=1.741   FoS<1=0
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fos_timeseries_main.csv
+
+[Step 10] Computing Richards residual ...
+  [PIML] Richards residual  μ = -8.5172e-11  σ = 2.8354e-10  m³/m³/s
+  [ML]   Richards residual  μ = -7.7996e-08  σ = 1.3599e-07  m³/m³/s
+
+[Step 11] Figures: PIML vs data-only network ...
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig01_loss_convergence_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig02_scatter_r2_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig03_theta_timeseries_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig04_residuals_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig05_vg_characteristic_curves.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig06_matric_suction_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig07_fos_timeseries_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig08_fos_distribution_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig09_pde_residual_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig10_full_dashboard_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig11_ablation_table.png
+
+█████████████████████████████████████████████████████████████████
+  SENSITIVITY ANALYSIS
+  Perturbing Ks and slope angle β independently
+█████████████████████████████████████████████████████████████████
+
+[SA-A] Ks sensitivity ...
+  Ks×0.60  FoS_mean=1.860  FoS_min=1.606  fail=0
+  Ks×0.70  FoS_mean=1.818  FoS_min=1.600  fail=0
+  Ks×0.80  FoS_mean=1.786  FoS_min=1.595  fail=0
+  Ks×0.90  FoS_mean=1.761  FoS_min=1.592  fail=0
+  Ks×1.00  FoS_mean=1.741  FoS_min=1.589  fail=0
+  Ks×1.10  FoS_mean=1.725  FoS_min=1.586  fail=0
+  Ks×1.20  FoS_mean=1.712  FoS_min=1.584  fail=0
+  Ks×1.30  FoS_mean=1.700  FoS_min=1.583  fail=0
+  Ks×1.40  FoS_mean=1.690  FoS_min=1.581  fail=0
+
+[SA-B] Slope angle sensitivity ...
+  β=23°  FoS_mean=2.424  FoS_min=2.230  fail=0
+  β=25°  FoS_mean=2.240  FoS_min=2.058  fail=0
+  β=27°  FoS_mean=2.085  FoS_min=1.913  fail=0
+  β=29°  FoS_mean=1.953  FoS_min=1.789  fail=0
+  β=31°  FoS_mean=1.839  FoS_min=1.681  fail=0
+  β=33°  FoS_mean=1.741  FoS_min=1.589  fail=0
+  β=35°  FoS_mean=1.656  FoS_min=1.508  fail=0
+  β=37°  FoS_mean=1.582  FoS_min=1.437  fail=0
+  β=39°  FoS_mean=1.518  FoS_min=1.376  fail=0
+  β=41°  FoS_mean=1.463  FoS_min=1.322  fail=0
+
+[SA-C] 2-D sensitivity grid (Ks × slope) ...
+  Grid complete.
+  → Saved: main_run_summary.csv, fos_sensitivity_ks.csv, fos_sensitivity_slope.csv, fos_sensitivity_grid_min.csv
+
+Main cell complete: models, figures, FoS series and sensitivity tables saved.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=2
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+    [3/6 runs | 21.0 min elapsed | ETA 21.0 min]
+  reference: default λ
+    [6/6 runs | 41.8 min elapsed | ETA 0.0 min]
+  LAM=0.1      (default) | val RMSE 0.00070±0.00008 | val phys 0.0000 | test R² 0.9911 | λP/D 0.092 | IC err 0.0005 | LBC rms 0.007 | BC res 0.018
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  data-only reference  : val RMSE 0.00060±0.00001 | val phys 0.001 | test R² 0.9923
+  persistence reference: val RMSE 0.00045 | test R² 0.9997
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig_sensitivity_lambda.png
+Default λ minus data-only, val RMSE: +0.00010 ± 0.00016 (95% CI, n=3 seeds) -> no detectable difference
+             config  val_rmse  val_rmse_sd  skill_vs_persistence
+data-only (all λ=0)    0.0006      0.00001              -0.81700
+          default λ    0.0007      0.00008              -1.48292
+Persistence val RMSE = 0.00045. Skill > 0 means better than repeating the last reading.
+Boundary scenarios skipped (RUN['bc_scen'] = False).
+  seed 42: PIML R²=0.9983 RMSE=0.00278 | ML R²=0.9993 RMSE=0.00180 | 1620s
+
+===== session started 2026-11-04 04:26 | run d5w128tanhT_lp0.1_bc0_season_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season =====
+  date        2026-11-04 04:26
+  run         d5w128tanhT_lp0.1_bc0_season_fy  quick_test=False
+  python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+  numpy       2.4.6
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': False, 'bc_scen': False, 'lstm': False, 'transfer': False, 'alerts': False, 'arch_search': False, 'lam_ext': False}
+Device: cuda
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-04-01 | 36,005 measured points | θ 0.263–0.540 | rain 448 mm
+  val  : 2026-04-01 -> 2026-04-18 | 6,355 measured points | θ 0.204–0.267 | rain 1 mm
+  test : 2026-05-01 -> 2026-09-29 | 37,386 measured points | θ 0.221–0.502 | rain 366 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 9.1531e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+
+PREP_ONLY = True: data, model functions and loss terms are ready; main training skipped (saved models and figures untouched). Now run the boundary-mode cell, then the cell you need.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+  resuming λ sweep: 2 configurations already saved
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=2
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+  reference: default λ
+  LAM=0.1      (default) | val RMSE 0.00070±0.00008 | val phys 0.0000 | test R² 0.9911 | λP/D 0.092 | IC err 0.0005 | LBC rms 0.007 | BC res 0.018
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  data-only reference  : val RMSE 0.00060±0.00001 | val phys 0.001 | test R² 0.9923
+  persistence reference: val RMSE 0.00045 | test R² 0.9997
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/season/fig_sensitivity_lambda.png
+Default λ minus data-only, val RMSE: +0.00010 ± 0.00016 (95% CI, n=3 seeds) -> no detectable difference
+             config  val_rmse  val_rmse_sd  skill_vs_persistence
+data-only (all λ=0)    0.0006      0.00001              -0.81700
+          default λ    0.0007      0.00008              -1.48292
+Persistence val RMSE = 0.00045. Skill > 0 means better than repeating the last reading.
+Boundary scenarios skipped (RUN['bc_scen'] = False).
+  seed 42: already saved, skipped
+  seed 43: PIML R²=0.9984 RMSE=0.00276 | ML R²=0.9986 RMSE=0.00259 | 1684s
+  seed 44: PIML R²=0.9966 RMSE=0.00395 | ML R²=0.9983 RMSE=0.00284 | 1681s
+
+  ── Test-set summary (mean ± SD over seeds) ──
+  PIML: R² = 0.9978 ± 0.0010 | RMSE = 0.00316 ± 0.00068
+  ML  : R² = 0.9987 ± 0.0005 | RMSE = 0.00241 ± 0.00054
+  Persistence: R² = 0.9997 | RMSE = 0.00121
+  Paired RMSE gain (ML − PIML): -0.00076 ± 0.00051  (>0 favours PIML)
+ seed  piml_r2  piml_rmse   ml_r2  ml_rmse  rmse_gain_ml_minus_piml  piml_skill  ml_skill
+   42  0.99833    0.00278 0.99930  0.00180                 -0.00098    -4.29123  -1.20759
+   43  0.99836    0.00276 0.99856  0.00259                 -0.00017    -4.19920  -3.57723
+   44  0.99663    0.00395 0.99826  0.00284                 -0.00111    -9.68718  -4.51059
+
+PIML: R² 0.9978 ± 0.0010 | skill -6.06
+ML  : R² 0.9987 ± 0.0005 | skill -3.10
+Paired RMSE (ML − PIML) = -0.00076; paired t = 2.56, p = 0.125 (n = 3, low power)
+
+Target = smoothed (as trained) vs raw sensor reading:
+                    model  r2_smoothed  rmse_smoothed  r2_raw  rmse_raw
+Persistence (lag-1 input)      0.99968        0.00121 0.99809   0.00298
+          PIML (main run)      0.99833        0.00278 0.99683   0.00384
+            ML (main run)      0.99929        0.00182 0.99781   0.00319
+LSTM baseline skipped (RUN['lstm'] = False).
+Transfer cell skipped (RUN['transfer'] = False).
+Alert cell skipped (RUN['alerts'] = False).

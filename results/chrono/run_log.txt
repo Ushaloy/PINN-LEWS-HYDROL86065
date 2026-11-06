@@ -1,0 +1,828 @@
+
+===== session started 2026-11-02 01:23 | run d5w128tanhT_lp0.1_bc0_chrono_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono =====
+  date        2026-11-02 01:23
+  run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+  python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+  numpy       2.1.3
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+Device: cuda
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-08-04 | 63,796 measured points | θ 0.204–0.540 | rain 679 mm
+  val  : 2026-08-04 -> 2026-09-12 | 7,975 measured points | θ 0.256–0.457 | rain 56 mm
+  test : 2026-09-12 -> 2026-09-29 | 7,975 measured points | θ 0.383–0.454 | rain 80 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 4.7193e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+  Epoch  100 | Data 0.00004 | Phys(norm) 0.00001 | BC(norm) 0.01867 | IC 0.00001 | LBC 0.00000 | λ·Phys/Data ratio: 0.027 | Val(data) 0.00004 | Val(phys) 0.00001 | LR 5.00e-04
+  Epoch  200 | Data 0.00002 | Phys(norm) 0.00000 | BC(norm) 0.01862 | IC 0.00000 | LBC 0.00000 | λ·Phys/Data ratio: 0.022 | Val(data) 0.00001 | Val(phys) 0.00000 | LR 3.75e-04
+  Epoch  300 | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01855 | IC 0.00000 | LBC 0.00000 | λ·Phys/Data ratio: 0.017 | Val(data) 0.00001 | Val(phys) 0.00000 | LR 1.25e-04
+  Epoch  400 | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01851 | IC 0.00000 | LBC 0.00000 | λ·Phys/Data ratio: 0.007 | Val(data) 0.00001 | Val(phys) 0.00000 | LR 0.00e+00
+
+[Step 6b] Switching to L-BFGS fine-tuning (200 steps, full-batch) ...
+  [L-BFGS] Step  20/200 (epoch 420) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step  40/200 (epoch 440) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step  60/200 (epoch 460) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step  80/200 (epoch 480) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 100/200 (epoch 500) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 120/200 (epoch 520) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 140/200 (epoch 540) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 160/200 (epoch 560) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 180/200 (epoch 580) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+  [L-BFGS] Step 200/200 (epoch 600) | Data 0.00001 | Phys(norm) 0.00000 | BC(norm) 0.01854 | IC 0.00000 | LBC 0.00000 | Val(data) 0.00001 | Val(phys) 0.00000
+
+  [IC / lower-BC diagnostics] {'lbc_mode': 'free_drainage', 'ic_mode': 'sensor', 'z_bottom_m': 0.5, 'lbc_rms_dpsi_dz': 0.00061, 'lbc_mean_abs_dpsi_dz': 0.00035, 'lbc_mean_q_bottom_over_Ks': 0.02108, 'ic_theta0_sensor': 0.416, 'ic_mean_abs_err_sensor': 5e-05}
+
+  Best val: 0.00001  @ epoch 407
+
+[Model Save] Saving model ...
+  → Model saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/piml_slope_model_108_pinn_richards.pt
+
+█████████████████████████████████████████████████████████████████
+  Training the data-only baseline (same network, no physics terms)
+  LAM=0  LAM_ZVAR=0  — No physics constraint
+█████████████████████████████████████████████████████████████████
+  ML Baseline Parameters: 76,801
+  [ML] Epoch  100 | Data 0.00004 | Val 0.00003 | LR 5.00e-04
+  [ML] Epoch  200 | Data 0.00002 | Val 0.00001 | LR 3.75e-04
+  [ML] Epoch  300 | Data 0.00001 | Val 0.00000 | LR 1.25e-04
+  [ML] Epoch  400 | Data 0.00001 | Val 0.00000 | LR 0.00e+00
+
+[ML] Switching to L-BFGS fine-tuning (200 steps, full-batch, data-only) ...
+  [ML-LBFGS] Step  20/200 (epoch 420) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step  40/200 (epoch 440) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step  60/200 (epoch 460) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step  80/200 (epoch 480) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step 100/200 (epoch 500) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step 120/200 (epoch 520) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step 140/200 (epoch 540) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step 160/200 (epoch 560) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step 180/200 (epoch 580) | Data 0.00001 | Val 0.00000
+  [ML-LBFGS] Step 200/200 (epoch 600) | Data 0.00001 | Val 0.00000
+
+  [ML] Best val: 0.00000  @ epoch 401
+
+[Model Save] Saving ML baseline checkpoint ...
+  → ML Baseline checkpoint saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/piml_slope_model_108_ml_baseline_final.pt
+
+[Step 7a] Evaluate PIML ...
+  [PIML] Train R²: 0.9998  |  Val R²: 0.9999  |  Test R²: 0.9996
+  [PIML] Test RMSE: 0.00041 m³/m³
+
+[Step 7b] Evaluate ML Baseline ...
+  [ML]   Train R²: 0.9999  |  Val R²: 0.9999  |  Test R²: 0.9997
+  [ML]   Test RMSE: 0.00036 m³/m³
+  [Persist] Test R²: 0.9998  |  Test RMSE: 0.00030 m³/m³
+
+[Step 8] Van Genuchten θ→ψ (both models) ...
+  [PIML] θ outlier frac (<0.10): 0.0000
+  [PIML] |ψ| clipped range: [0.037, 1.552] m
+  [ML]   θ outlier frac (<0.10): 0.0000
+  [ML]   |ψ| clipped range: [0.035, 1.545] m
+
+  [PIML] FoS min=1.590  mean=1.741  FoS<1=0
+  [ML]   FoS min=1.589  mean=1.741   FoS<1=0
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fos_timeseries_main.csv
+
+[Step 10] Computing Richards residual ...
+  [PIML] Richards residual  μ = 7.4010e-12  σ = 4.0788e-11  m³/m³/s
+  [ML]   Richards residual  μ = -4.1633e-08  σ = 1.2115e-07  m³/m³/s
+
+[Step 11] Figures: PIML vs data-only network ...
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig01_loss_convergence_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig02_scatter_r2_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig03_theta_timeseries_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig04_residuals_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig05_vg_characteristic_curves.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig06_matric_suction_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig07_fos_timeseries_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig08_fos_distribution_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig09_pde_residual_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig10_full_dashboard_ablation.png
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig11_ablation_table.png
+
+█████████████████████████████████████████████████████████████████
+  SENSITIVITY ANALYSIS
+  Perturbing Ks and slope angle β independently
+█████████████████████████████████████████████████████████████████
+
+[SA-A] Ks sensitivity ...
+  Ks×0.60  FoS_mean=1.859  FoS_min=1.609  fail=0
+  Ks×0.70  FoS_mean=1.817  FoS_min=1.602  fail=0
+  Ks×0.80  FoS_mean=1.785  FoS_min=1.597  fail=0
+  Ks×0.90  FoS_mean=1.761  FoS_min=1.593  fail=0
+  Ks×1.00  FoS_mean=1.741  FoS_min=1.590  fail=0
+  Ks×1.10  FoS_mean=1.725  FoS_min=1.588  fail=0
+  Ks×1.20  FoS_mean=1.711  FoS_min=1.586  fail=0
+  Ks×1.30  FoS_mean=1.700  FoS_min=1.584  fail=0
+  Ks×1.40  FoS_mean=1.690  FoS_min=1.582  fail=0
+
+[SA-B] Slope angle sensitivity ...
+  β=23°  FoS_mean=2.424  FoS_min=2.232  fail=0
+  β=25°  FoS_mean=2.240  FoS_min=2.060  fail=0
+  β=27°  FoS_mean=2.085  FoS_min=1.915  fail=0
+  β=29°  FoS_mean=1.952  FoS_min=1.790  fail=0
+  β=31°  FoS_mean=1.839  FoS_min=1.683  fail=0
+  β=33°  FoS_mean=1.741  FoS_min=1.590  fail=0
+  β=35°  FoS_mean=1.656  FoS_min=1.509  fail=0
+  β=37°  FoS_mean=1.582  FoS_min=1.439  fail=0
+  β=39°  FoS_mean=1.518  FoS_min=1.377  fail=0
+  β=41°  FoS_mean=1.462  FoS_min=1.323  fail=0
+
+[SA-C] 2-D sensitivity grid (Ks × slope) ...
+  Grid complete.
+  → Saved: main_run_summary.csv, fos_sensitivity_ks.csv, fos_sensitivity_slope.csv, fos_sensitivity_grid_min.csv
+
+Main cell complete: models, figures, FoS series and sensitivity tables saved.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=7
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+    [3/21 runs | 37.0 min elapsed | ETA 222.1 min]
+  reference: default λ
+    [6/21 runs | 74.0 min elapsed | ETA 185.1 min]
+    [9/21 runs | 111.3 min elapsed | ETA 148.4 min]
+  LAM=0.001              | val RMSE 0.00098±0.00008 | val phys 0.0001 | test R² 0.9993 | λP/D 0.007 | IC err 0.0001 | LBC rms 0.003 | BC res 0.096
+  LAM=0.1      (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+    [12/21 runs | 147.4 min elapsed | ETA 110.6 min]
+  LAM=1                  | val RMSE 0.00106±0.00013 | val phys 0.0000 | test R² 0.9983 | λP/D 0.119 | IC err 0.0002 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0        (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+    [15/21 runs | 185.0 min elapsed | ETA 74.0 min]
+  LAM_BC=0.001              | val RMSE 0.00095±0.00010 | val phys 0.0000 | test R² 0.9990 | λP/D 0.032 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+    [18/21 runs | 221.6 min elapsed | ETA 36.9 min]
+  LAM_BC=0.01               | val RMSE 0.00098±0.00011 | val phys 0.0000 | test R² 0.9985 | λP/D 0.027 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+    [21/21 runs | 259.1 min elapsed | ETA 0.0 min]
+  LAM_BC=0.1                | val RMSE 0.00294±0.00011 | val phys 0.0001 | test R² 0.9502 | λP/D 0.067 | IC err 0.0014 | LBC rms 0.007 | BC res 0.094
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  LAM      =0.001   Δ=+0.00003 ± 0.00010  n.s.
+  LAM      =1       Δ=+0.00011 ± 0.00011  n.s.
+  LAM_BC   =0.001   Δ=+0.00001 ± 0.00001  n.s.
+  LAM_BC   =0.01    Δ=+0.00003 ± 0.00002  DIFFERS
+  LAM_BC   =0.1     Δ=+0.00199 ± 0.00033  DIFFERS
+  data-only reference  : val RMSE 0.00097±0.00006 | val phys 0.832 | test R² 0.9993
+  persistence reference: val RMSE 0.00035 | test R² 0.9998
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lambda.png
+
+===== session started 2026-11-02 09:07 | run d5w128tanhT_lp0.1_bc0_chrono_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono =====
+  date        2026-11-02 09:07
+  run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+  python      3.13.18  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cpu  cuda=False
+  numpy       2.1.3
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+
+===== session started 2026-11-02 09:08 | run d5w128tanhT_lp0.1_bc0_chrono_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono =====
+  date        2026-11-02 09:08
+  run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+  python      3.13.18  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cpu  cuda=False
+  numpy       2.1.3
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+Device: cpu
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-08-04 | 63,796 measured points | θ 0.204–0.540 | rain 679 mm
+  val  : 2026-08-04 -> 2026-09-12 | 7,975 measured points | θ 0.256–0.457 | rain 56 mm
+  test : 2026-09-12 -> 2026-09-29 | 7,975 measured points | θ 0.383–0.454 | rain 80 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 4.7193e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+
+PREP_ONLY = True: data, model functions and loss terms are ready; main training skipped (saved models and figures untouched). Now run the boundary-mode cell, then the cell you need.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+  resuming λ sweep: 7 configurations already saved
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=7
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+  reference: default λ
+  LAM=0.001              | val RMSE 0.00098±0.00008 | val phys 0.0001 | test R² 0.9993 | λP/D 0.007 | IC err 0.0001 | LBC rms 0.003 | BC res 0.096
+  LAM=0.1      (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM=1                  | val RMSE 0.00106±0.00013 | val phys 0.0000 | test R² 0.9983 | λP/D 0.119 | IC err 0.0002 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0        (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.001              | val RMSE 0.00095±0.00010 | val phys 0.0000 | test R² 0.9990 | λP/D 0.032 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.01               | val RMSE 0.00098±0.00011 | val phys 0.0000 | test R² 0.9985 | λP/D 0.027 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.1                | val RMSE 0.00294±0.00011 | val phys 0.0001 | test R² 0.9502 | λP/D 0.067 | IC err 0.0014 | LBC rms 0.007 | BC res 0.094
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  LAM      =0.001   Δ=+0.00003 ± 0.00010  n.s.
+  LAM      =1       Δ=+0.00011 ± 0.00011  n.s.
+  LAM_BC   =0.001   Δ=+0.00001 ± 0.00001  n.s.
+  LAM_BC   =0.01    Δ=+0.00003 ± 0.00002  DIFFERS
+  LAM_BC   =0.1     Δ=+0.00199 ± 0.00033  DIFFERS
+  data-only reference  : val RMSE 0.00097±0.00006 | val phys 0.832 | test R² 0.9993
+  persistence reference: val RMSE 0.00035 | test R² 0.9998
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lambda.png
+Default λ minus data-only, val RMSE: -0.00002 ± 0.00017 (95% CI, n=3 seeds) -> no detectable difference
+             config  val_rmse  val_rmse_sd  skill_vs_persistence
+data-only (all λ=0)   0.00097      0.00006              -6.64178
+          default λ   0.00095      0.00011              -6.39302
+          LAM=0.001   0.00098      0.00008              -6.86770
+              LAM=1   0.00106      0.00013              -8.17571
+       LAM_BC=0.001   0.00095      0.00010              -6.47400
+        LAM_BC=0.01   0.00098      0.00011              -6.87404
+         LAM_BC=0.1   0.00294      0.00011             -69.48170
+Persistence val RMSE = 0.00035. Skill > 0 means better than repeating the last reading.
+  free_drainage IC=sensor  λ_LBC=0.1   seed 42: val RMSE 0.00092 | θ(0, 0.3, 0.5 m) = 0.412, 0.413, 0.413 | ψ_base -0.253 m | dψ/dz_base +0.000 | q_base/K +1.000 | BC met: True [1/18, 49 min]
+
+===== session started 2026-11-03 01:27 | run d5w128tanhT_lp0.1_bc0_chrono_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono =====
+  date        2026-11-03 01:27
+  run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+  python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+  numpy       2.4.6
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+-rw------- 1 root root    2560 Nov  2 06:32 sens_cache_d5w128tanhT_lp0.1_bc0_chrono_fy.pkl
+Device: cuda
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-08-04 | 63,796 measured points | θ 0.204–0.540 | rain 679 mm
+  val  : 2026-08-04 -> 2026-09-12 | 7,975 measured points | θ 0.256–0.457 | rain 56 mm
+  test : 2026-09-12 -> 2026-09-29 | 7,975 measured points | θ 0.383–0.454 | rain 80 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 4.7193e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+
+PREP_ONLY = True: data, model functions and loss terms are ready; main training skipped (saved models and figures untouched). Now run the boundary-mode cell, then the cell you need.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+  resuming λ sweep: 7 configurations already saved
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=7
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+  reference: default λ
+  LAM=0.001              | val RMSE 0.00098±0.00008 | val phys 0.0001 | test R² 0.9993 | λP/D 0.007 | IC err 0.0001 | LBC rms 0.003 | BC res 0.096
+  LAM=0.1      (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM=1                  | val RMSE 0.00106±0.00013 | val phys 0.0000 | test R² 0.9983 | λP/D 0.119 | IC err 0.0002 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0        (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.001              | val RMSE 0.00095±0.00010 | val phys 0.0000 | test R² 0.9990 | λP/D 0.032 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.01               | val RMSE 0.00098±0.00011 | val phys 0.0000 | test R² 0.9985 | λP/D 0.027 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.1                | val RMSE 0.00294±0.00011 | val phys 0.0001 | test R² 0.9502 | λP/D 0.067 | IC err 0.0014 | LBC rms 0.007 | BC res 0.094
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  LAM      =0.001   Δ=+0.00003 ± 0.00010  n.s.
+  LAM      =1       Δ=+0.00011 ± 0.00011  n.s.
+  LAM_BC   =0.001   Δ=+0.00001 ± 0.00001  n.s.
+  LAM_BC   =0.01    Δ=+0.00003 ± 0.00002  DIFFERS
+  LAM_BC   =0.1     Δ=+0.00199 ± 0.00033  DIFFERS
+  data-only reference  : val RMSE 0.00097±0.00006 | val phys 0.832 | test R² 0.9993
+  persistence reference: val RMSE 0.00035 | test R² 0.9998
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lambda.png
+Default λ minus data-only, val RMSE: -0.00002 ± 0.00017 (95% CI, n=3 seeds) -> no detectable difference
+             config  val_rmse  val_rmse_sd  skill_vs_persistence
+data-only (all λ=0)   0.00097      0.00006              -6.64178
+          default λ   0.00095      0.00011              -6.39302
+          LAM=0.001   0.00098      0.00008              -6.86770
+              LAM=1   0.00106      0.00013              -8.17571
+       LAM_BC=0.001   0.00095      0.00010              -6.47400
+        LAM_BC=0.01   0.00098      0.00011              -6.87404
+         LAM_BC=0.1   0.00294      0.00011             -69.48170
+Persistence val RMSE = 0.00035. Skill > 0 means better than repeating the last reading.
+resuming: 1 runs already done
+  free_drainage IC=sensor  λ_LBC=0.1   seed 43: val RMSE 0.00086 | θ(0, 0.3, 0.5 m) = 0.412, 0.412, 0.412 | ψ_base -0.253 m | dψ/dz_base +0.000 | q_base/K +1.000 | BC met: True [2/18, 13 min]
+  free_drainage IC=sensor  λ_LBC=0.1   seed 44: val RMSE 0.00107 | θ(0, 0.3, 0.5 m) = 0.412, 0.413, 0.413 | ψ_base -0.253 m | dψ/dz_base +0.000 | q_base/K +1.000 | BC met: True [3/18, 25 min]
+  free_drainage IC=uniform λ_LBC=0.1   seed 42: val RMSE 0.00092 | θ(0, 0.3, 0.5 m) = 0.412, 0.413, 0.413 | ψ_base -0.253 m | dψ/dz_base +0.000 | q_base/K +1.000 | BC met: True [4/18, 38 min]
+  free_drainage IC=uniform λ_LBC=0.1   seed 43: val RMSE 0.00086 | θ(0, 0.3, 0.5 m) = 0.412, 0.412, 0.412 | ψ_base -0.253 m | dψ/dz_base +0.001 | q_base/K +0.999 | BC met: True [5/18, 51 min]
+  free_drainage IC=uniform λ_LBC=0.1   seed 44: val RMSE 0.00107 | θ(0, 0.3, 0.5 m) = 0.412, 0.413, 0.413 | ψ_base -0.253 m | dψ/dz_base +0.000 | q_base/K +1.000 | BC met: True [6/18, 65 min]
+  no_flux       IC=sensor  λ_LBC=1     seed 42: val RMSE 0.00462 | θ(0, 0.3, 0.5 m) = 0.437, 0.415, 0.395 | ψ_base -0.292 m | dψ/dz_base +0.998 | q_base/K +0.002 | BC met: True [7/18, 78 min]
+  no_flux       IC=sensor  λ_LBC=1     seed 43: val RMSE 0.00615 | θ(0, 0.3, 0.5 m) = 0.430, 0.412, 0.399 | ψ_base -0.279 m | dψ/dz_base +1.000 | q_base/K -0.000 | BC met: True [8/18, 91 min]
+  no_flux       IC=sensor  λ_LBC=1     seed 44: val RMSE 0.00489 | θ(0, 0.3, 0.5 m) = 0.426, 0.413, 0.423 | ψ_base -0.226 m | dψ/dz_base +0.992 | q_base/K +0.008 | BC met: True [9/18, 104 min]
+  no_flux       IC=sensor  λ_LBC=10    seed 42: val RMSE 0.00468 | θ(0, 0.3, 0.5 m) = 0.381, 0.414, 0.409 | ψ_base -0.254 m | dψ/dz_base +1.000 | q_base/K +0.000 | BC met: True [10/18, 117 min]
+
+===== session started 2026-11-03 04:14 | run d5w128tanhT_lp0.1_bc0_chrono_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono =====
+  date        2026-11-03 04:14
+  run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+  python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+  numpy       2.4.6
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+-rw------- 1 root root    2560 Nov  3 04:10 sens_cache_d5w128tanhT_lp0.1_bc0_chrono_fy.pkl
+Device: cuda
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-08-04 | 63,796 measured points | θ 0.204–0.540 | rain 679 mm
+  val  : 2026-08-04 -> 2026-09-12 | 7,975 measured points | θ 0.256–0.457 | rain 56 mm
+  test : 2026-09-12 -> 2026-09-29 | 7,975 measured points | θ 0.383–0.454 | rain 80 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 4.7193e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+
+PREP_ONLY = True: data, model functions and loss terms are ready; main training skipped (saved models and figures untouched). Now run the boundary-mode cell, then the cell you need.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+  resuming λ sweep: 7 configurations already saved
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=7
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+  reference: default λ
+  LAM=0.001              | val RMSE 0.00098±0.00008 | val phys 0.0001 | test R² 0.9993 | λP/D 0.007 | IC err 0.0001 | LBC rms 0.003 | BC res 0.096
+  LAM=0.1      (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM=1                  | val RMSE 0.00106±0.00013 | val phys 0.0000 | test R² 0.9983 | λP/D 0.119 | IC err 0.0002 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0        (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.001              | val RMSE 0.00095±0.00010 | val phys 0.0000 | test R² 0.9990 | λP/D 0.032 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.01               | val RMSE 0.00098±0.00011 | val phys 0.0000 | test R² 0.9985 | λP/D 0.027 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.1                | val RMSE 0.00294±0.00011 | val phys 0.0001 | test R² 0.9502 | λP/D 0.067 | IC err 0.0014 | LBC rms 0.007 | BC res 0.094
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  LAM      =0.001   Δ=+0.00003 ± 0.00010  n.s.
+  LAM      =1       Δ=+0.00011 ± 0.00011  n.s.
+  LAM_BC   =0.001   Δ=+0.00001 ± 0.00001  n.s.
+  LAM_BC   =0.01    Δ=+0.00003 ± 0.00002  DIFFERS
+  LAM_BC   =0.1     Δ=+0.00199 ± 0.00033  DIFFERS
+  data-only reference  : val RMSE 0.00097±0.00006 | val phys 0.832 | test R² 0.9993
+  persistence reference: val RMSE 0.00035 | test R² 0.9998
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lambda.png
+Default λ minus data-only, val RMSE: -0.00002 ± 0.00017 (95% CI, n=3 seeds) -> no detectable difference
+             config  val_rmse  val_rmse_sd  skill_vs_persistence
+data-only (all λ=0)   0.00097      0.00006              -6.64178
+          default λ   0.00095      0.00011              -6.39302
+          LAM=0.001   0.00098      0.00008              -6.86770
+              LAM=1   0.00106      0.00013              -8.17571
+       LAM_BC=0.001   0.00095      0.00010              -6.47400
+        LAM_BC=0.01   0.00098      0.00011              -6.87404
+         LAM_BC=0.1   0.00294      0.00011             -69.48170
+Persistence val RMSE = 0.00035. Skill > 0 means better than repeating the last reading.
+resuming: 10 runs already done
+  no_flux       IC=sensor  λ_LBC=10    seed 43: val RMSE 0.00475 | θ(0, 0.3, 0.5 m) = 0.436, 0.411, 0.419 | ψ_base -0.233 m | dψ/dz_base +0.994 | q_base/K +0.006 | BC met: True [11/18, 14 min]
+  no_flux       IC=sensor  λ_LBC=10    seed 44: val RMSE 0.00518 | θ(0, 0.3, 0.5 m) = 0.441, 0.412, 0.380 | ψ_base -0.332 m | dψ/dz_base +0.972 | q_base/K +0.028 | BC met: True [12/18, 28 min]
+  water_table   IC=sensor  λ_LBC=1     seed 42: val RMSE 0.01048 | θ(0, 0.3, 0.5 m) = 0.423, 0.423, 0.428 | ψ_base -0.215 m | dψ/dz_base +0.145 | q_base/K +0.855 | BC met: False [13/18, 40 min]
+  water_table   IC=sensor  λ_LBC=1     seed 43: val RMSE 0.00825 | θ(0, 0.3, 0.5 m) = 0.405, 0.418, 0.424 | ψ_base -0.222 m | dψ/dz_base +0.183 | q_base/K +0.817 | BC met: False [14/18, 53 min]
+  water_table   IC=sensor  λ_LBC=1     seed 44: val RMSE 0.00785 | θ(0, 0.3, 0.5 m) = 0.387, 0.410, 0.414 | ψ_base -0.247 m | dψ/dz_base +0.130 | q_base/K +0.870 | BC met: False [15/18, 64 min]
+  water_table   IC=sensor  λ_LBC=10    seed 42: val RMSE 0.02573 | θ(0, 0.3, 0.5 m) = 0.347, 0.421, 0.512 | ψ_base -0.071 m | dψ/dz_base +0.825 | q_base/K +0.175 | BC met: False [16/18, 76 min]
+  water_table   IC=sensor  λ_LBC=10    seed 43: val RMSE 0.01167 | θ(0, 0.3, 0.5 m) = 0.064, 0.394, 0.516 | ψ_base -0.065 m | dψ/dz_base +0.743 | q_base/K +0.257 | BC met: True [17/18, 88 min]
+  water_table   IC=sensor  λ_LBC=10    seed 44: val RMSE 0.06671 | θ(0, 0.3, 0.5 m) = 0.363, 0.366, 0.367 | ψ_base -0.362 m | dψ/dz_base +0.020 | q_base/K +0.980 | BC met: False [18/18, 100 min]
+
+Mean over seeds:
+                               val_rmse  theta_surf  theta_sens  theta_base  psi_base  dpsi_base  q_base_over_K  fos_min_sensor  fos_min_0p5m  bc_met
+lbc           ic      lam_lbc                                                                                                                        
+free_drainage sensor  0.1        0.0009      0.4124      0.4125      0.4125   -0.2531     0.0003         0.9997          1.6618        1.6617  1.0000
+              uniform 0.1        0.0010      0.4124      0.4125      0.4125   -0.2531     0.0003         0.9997          1.6618        1.6617  1.0000
+no_flux       sensor  1.0        0.0052      0.4312      0.4130      0.4056   -0.2655     0.9968         0.0032          1.6723        1.6840  1.0000
+                      10.0       0.0049      0.4193      0.4122      0.4026   -0.2727     0.9889         0.0111          1.6668        1.6915  1.0000
+water_table   sensor  1.0        0.0089      0.4052      0.4172      0.4220   -0.2282     0.1526         0.8474          1.6560        1.6573  0.0000
+                      10.0       0.0347      0.2581      0.3936      0.4653   -0.1659     0.5293         0.4707          1.6863        1.6520  0.3333
+
+Mean |Δθ| vs free_drainage (IC=sensor, λ_LBC=0.1), same seed, test inputs [reference test RMSE at the sensor = 0.0006]:
+  free_drainage IC=uniform λ_LBC=0.1   BC met=True  | sensor 0.0000 | 0.5 m 0.0000 | surface 0.0000 m³/m³ | Δ val RMSE +0.00000
+  no_flux       IC=sensor  λ_LBC=1     BC met=True  | sensor 0.0038 | 0.5 m 0.0140 | surface 0.0188 m³/m³ | Δ val RMSE +0.00427
+  no_flux       IC=sensor  λ_LBC=10    BC met=True  | sensor 0.0030 | 0.5 m 0.0179 | surface 0.0279 m³/m³ | Δ val RMSE +0.00392
+  water_table   IC=sensor  λ_LBC=1     BC met=False | sensor 0.0067 | 0.5 m 0.0122 | surface 0.0142 m³/m³ | Δ val RMSE +0.00791
+  water_table   IC=sensor  λ_LBC=10    BC met=False | sensor 0.0254 | 0.5 m 0.0829 | surface 0.1543 m³/m³ | Δ val RMSE +0.03375
+
+VERDICT
+  Initial condition: sensor-only vs uniform profile changes θ by ≤ 0.0000 m³/m³ at any depth.
+  Lower boundary (scenarios where the condition was met): θ at the sensor changes by ≤ 0.0038, but θ at 0.5 m changes by up to 0.0179 m³/m³ (27.8 × the sensor test RMSE).
+  -> The 0.30 m observations do not constrain the profile below the sensor; the deep state depends on the assumed lower boundary (free drainage adopted; a deeper probe is needed to verify it).
+  Not met (do NOT use for conclusions): water_table λ=1, water_table λ=10
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lower_bc_ic.png
+  seed 42: PIML R²=0.9996 RMSE=0.00041 | ML R²=0.9997 RMSE=0.00036 | 2833s
+  seed 43: PIML R²=0.9995 RMSE=0.00046 | ML R²=0.9997 RMSE=0.00037 | 2861s
+  seed 44: PIML R²=0.9995 RMSE=0.00046 | ML R²=0.9996 RMSE=0.00038 | 2847s
+
+  ── Test-set summary (mean ± SD over seeds) ──
+  PIML: R² = 0.9995 ± 0.0001 | RMSE = 0.00044 ± 0.00003
+  ML  : R² = 0.9997 ± 0.0000 | RMSE = 0.00037 ± 0.00001
+  Persistence: R² = 0.9998 | RMSE = 0.00030
+  Paired RMSE gain (ML − PIML): -0.00007 ± 0.00002  (>0 favours PIML)
+ seed  piml_r2  piml_rmse   ml_r2  ml_rmse  rmse_gain_ml_minus_piml  piml_skill  ml_skill
+   42  0.99958    0.00041 0.99968  0.00036                 -0.00005    -0.83307  -0.42832
+   43  0.99948    0.00046 0.99967  0.00037                 -0.00009    -1.27393  -0.47336
+   44  0.99948    0.00046 0.99964  0.00038                 -0.00008    -1.29366  -0.57785
+
+PIML: R² 0.9995 ± 0.0001 | skill -1.13
+ML  : R² 0.9997 ± 0.0000 | skill -0.49
+Paired RMSE (ML − PIML) = -0.00007; paired t = 5.86, p = 0.028 (n = 3, low power)
+  seed 42: already saved, skipped
+  seed 43: already saved, skipped
+  seed 44: already saved, skipped
+
+  ── Test-set summary (mean ± SD over seeds) ──
+  PIML: R² = 0.9995 ± 0.0001 | RMSE = 0.00044 ± 0.00003
+  ML  : R² = 0.9997 ± 0.0000 | RMSE = 0.00037 ± 0.00001
+  Persistence: R² = 0.9998 | RMSE = 0.00030
+  Paired RMSE gain (ML − PIML): -0.00007 ± 0.00002  (>0 favours PIML)
+Parameters → PINN 76,801 | LSTM 56,961
+  LSTM-current  seed 42: val RMSE=0.00054 | test R²=0.9997  RMSE=0.00036  (465s)
+  LSTM-current  seed 43: val RMSE=0.00063 | test R²=0.9994  RMSE=0.00050  (461s)
+  LSTM-current  seed 44: val RMSE=0.00088 | test R²=0.9996  RMSE=0.00043  (469s)
+  LSTM-history  seed 42: val RMSE=0.00060 | test R²=0.9994  RMSE=0.00048  (468s)
+  LSTM-history  seed 43: val RMSE=0.00054 | test R²=0.9993  RMSE=0.00053  (467s)
+  LSTM-history  seed 44: val RMSE=0.00063 | test R²=0.9993  RMSE=0.00053  (451s)
+
+  Saved lstm_final.pt → LSTM-current, seed 42, val RMSE=0.00054, test R²=0.9997
+
+  ── LSTM test summary (mean ± SD over seeds) ──
+  LSTM-current : R² = 0.9995 ± 0.0002 | RMSE = 0.00043 ± 0.00007
+  LSTM-history : R² = 0.9993 ± 0.0001 | RMSE = 0.00051 ± 0.00003
+  Persistence    : R² = 0.9998 | RMSE = 0.00030
+mv: cannot stat '/content/dev_108_updated.csv': No such file or directory
+mv: cannot stat '/content/dev_107_updated.csv': No such file or directory
+dev_107_updated.csv  dev_108_updated.csv
+Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+
+===== session started 2026-11-03 09:07 | run d5w128tanhT_lp0.1_bc0_chrono_fy | outputs: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono =====
+  date        2026-11-03 09:07
+  run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+  python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+  torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+  numpy       2.4.6
+  pandas      2.2.3
+  scipy       1.16.3
+  sklearn     1.6.1
+  matplotlib  3.10.0
+  data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+  data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+  budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+  optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+-rw------- 1 root root    2560 Nov  3 04:10 sens_cache_d5w128tanhT_lp0.1_bc0_chrono_fy.pkl
+Device: cuda
+
+[Step 1-2] Loading data (full year, fixed 2-min grid) ...
+  [Dev108] 144,847 raw rows | 612 duplicates | warm-up 268 rows | 79,746 measured 2-min points (5,253 filled-in points dropped, 24,378 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev108] rain 821 mm | max 30-min depth 37.9 mm | θ 0.204–0.540 | 383 segments, longest gap 35.2 d
+  train: 2025-11-01 -> 2026-08-04 | 63,796 measured points | θ 0.204–0.540 | rain 679 mm
+  val  : 2026-08-04 -> 2026-09-12 | 7,975 measured points | θ 0.256–0.457 | rain 56 mm
+  test : 2026-09-12 -> 2026-09-29 | 7,975 measured points | θ 0.383–0.454 | rain 80 mm
+
+[Step 3] Building PINN (true autograd Richards) ...
+  Parameters: 76,801
+
+[Step 4-6] Training PINN with true Richards autograd loss ...
+  ∂θ/∂t scale for normalization: 4.7193e-08 m³/m³/s
+  [IC] theta0 (sensor, z=0.3 m) = 0.4160 m³/m³  (mode=sensor)
+
+PREP_ONLY = True: data, model functions and loss terms are ready; main training skipped (saved models and figures untouched). Now run the boundary-mode cell, then the cell you need.
+Boundary modes ready: LBC_MODE=free_drainage, IC_MODE=sensor
+  resuming λ sweep: 7 configurations already saved
+
+══════════════════════════════════════════════════════════════════════
+[Step 8] Loss-weight sensitivity (OAT) — budget 130 Adam + 70 L-BFGS, seeds=[42, 43, 44], unique configs=7
+══════════════════════════════════════════════════════════════════════
+  reference: data-only (all λ = 0), same budget
+  reference: default λ
+  LAM=0.001              | val RMSE 0.00098±0.00008 | val phys 0.0001 | test R² 0.9993 | λP/D 0.007 | IC err 0.0001 | LBC rms 0.003 | BC res 0.096
+  LAM=0.1      (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM=1                  | val RMSE 0.00106±0.00013 | val phys 0.0000 | test R² 0.9983 | λP/D 0.119 | IC err 0.0002 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0        (default) | val RMSE 0.00095±0.00011 | val phys 0.0000 | test R² 0.9990 | λP/D 0.029 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.001              | val RMSE 0.00095±0.00010 | val phys 0.0000 | test R² 0.9990 | λP/D 0.032 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.01               | val RMSE 0.00098±0.00011 | val phys 0.0000 | test R² 0.9985 | λP/D 0.027 | IC err 0.0001 | LBC rms 0.001 | BC res 0.096
+  LAM_BC=0.1                | val RMSE 0.00294±0.00011 | val phys 0.0001 | test R² 0.9502 | λP/D 0.067 | IC err 0.0014 | LBC rms 0.007 | BC res 0.094
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/sensitivity_lambda.csv (+ _per_seed.csv)
+
+  ── Paired Δ(val RMSE) vs default λ (same seeds; >0 = worse; 95% CI half-width) ──
+  LAM      =0.001   Δ=+0.00003 ± 0.00010  n.s.
+  LAM      =1       Δ=+0.00011 ± 0.00011  n.s.
+  LAM_BC   =0.001   Δ=+0.00001 ± 0.00001  n.s.
+  LAM_BC   =0.01    Δ=+0.00003 ± 0.00002  DIFFERS
+  LAM_BC   =0.1     Δ=+0.00199 ± 0.00033  DIFFERS
+  data-only reference  : val RMSE 0.00097±0.00006 | val phys 0.832 | test R² 0.9993
+  persistence reference: val RMSE 0.00035 | test R² 0.9998
+  NOTE: n.s. with few seeds is low power — it does NOT prove equivalence; report as 'no detectable dependence within OAT screening'.
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lambda.png
+Default λ minus data-only, val RMSE: -0.00002 ± 0.00017 (95% CI, n=3 seeds) -> no detectable difference
+             config  val_rmse  val_rmse_sd  skill_vs_persistence
+data-only (all λ=0)   0.00097      0.00006              -6.64178
+          default λ   0.00095      0.00011              -6.39302
+          LAM=0.001   0.00098      0.00008              -6.86770
+              LAM=1   0.00106      0.00013              -8.17571
+       LAM_BC=0.001   0.00095      0.00010              -6.47400
+        LAM_BC=0.01   0.00098      0.00011              -6.87404
+         LAM_BC=0.1   0.00294      0.00011             -69.48170
+Persistence val RMSE = 0.00035. Skill > 0 means better than repeating the last reading.
+resuming: 18 runs already done
+
+Mean over seeds:
+                               val_rmse  theta_surf  theta_sens  theta_base  psi_base  dpsi_base  q_base_over_K  fos_min_sensor  fos_min_0p5m  bc_met
+lbc           ic      lam_lbc                                                                                                                        
+free_drainage sensor  0.1        0.0009      0.4124      0.4125      0.4125   -0.2531     0.0003         0.9997          1.6618        1.6617  1.0000
+              uniform 0.1        0.0010      0.4124      0.4125      0.4125   -0.2531     0.0003         0.9997          1.6618        1.6617  1.0000
+no_flux       sensor  1.0        0.0052      0.4312      0.4130      0.4056   -0.2655     0.9968         0.0032          1.6723        1.6840  1.0000
+                      10.0       0.0049      0.4193      0.4122      0.4026   -0.2727     0.9889         0.0111          1.6668        1.6915  1.0000
+water_table   sensor  1.0        0.0089      0.4052      0.4172      0.4220   -0.2282     0.1526         0.8474          1.6560        1.6573  0.0000
+                      10.0       0.0347      0.2581      0.3936      0.4653   -0.1659     0.5293         0.4707          1.6863        1.6520  0.3333
+
+Mean |Δθ| vs free_drainage (IC=sensor, λ_LBC=0.1), same seed, test inputs [reference test RMSE at the sensor = 0.0006]:
+  free_drainage IC=uniform λ_LBC=0.1   BC met=True  | sensor 0.0000 | 0.5 m 0.0000 | surface 0.0000 m³/m³ | Δ val RMSE +0.00000
+  no_flux       IC=sensor  λ_LBC=1     BC met=True  | sensor 0.0038 | 0.5 m 0.0140 | surface 0.0188 m³/m³ | Δ val RMSE +0.00427
+  no_flux       IC=sensor  λ_LBC=10    BC met=True  | sensor 0.0030 | 0.5 m 0.0179 | surface 0.0279 m³/m³ | Δ val RMSE +0.00392
+  water_table   IC=sensor  λ_LBC=1     BC met=False | sensor 0.0067 | 0.5 m 0.0122 | surface 0.0142 m³/m³ | Δ val RMSE +0.00791
+  water_table   IC=sensor  λ_LBC=10    BC met=False | sensor 0.0254 | 0.5 m 0.0829 | surface 0.1543 m³/m³ | Δ val RMSE +0.03375
+
+VERDICT
+  Initial condition: sensor-only vs uniform profile changes θ by ≤ 0.0000 m³/m³ at any depth.
+  Lower boundary (scenarios where the condition was met): θ at the sensor changes by ≤ 0.0038, but θ at 0.5 m changes by up to 0.0179 m³/m³ (27.8 × the sensor test RMSE).
+  -> The 0.30 m observations do not constrain the profile below the sensor; the deep state depends on the assumed lower boundary (free drainage adopted; a deeper probe is needed to verify it).
+  Not met (do NOT use for conclusions): water_table λ=1, water_table λ=10
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_sensitivity_lower_bc_ic.png
+  seed 42: already saved, skipped
+  seed 43: already saved, skipped
+  seed 44: already saved, skipped
+
+  ── Test-set summary (mean ± SD over seeds) ──
+  PIML: R² = 0.9995 ± 0.0001 | RMSE = 0.00044 ± 0.00003
+  ML  : R² = 0.9997 ± 0.0000 | RMSE = 0.00037 ± 0.00001
+  Persistence: R² = 0.9998 | RMSE = 0.00030
+  Paired RMSE gain (ML − PIML): -0.00007 ± 0.00002  (>0 favours PIML)
+ seed  piml_r2  piml_rmse   ml_r2  ml_rmse  rmse_gain_ml_minus_piml  piml_skill  ml_skill
+   42  0.99958    0.00041 0.99968  0.00036                 -0.00005    -0.83307  -0.42832
+   43  0.99948    0.00046 0.99967  0.00037                 -0.00009    -1.27393  -0.47336
+   44  0.99948    0.00046 0.99964  0.00038                 -0.00008    -1.29366  -0.57785
+
+PIML: R² 0.9995 ± 0.0001 | skill -1.13
+ML  : R² 0.9997 ± 0.0000 | skill -0.49
+Paired RMSE (ML − PIML) = -0.00007; paired t = 5.86, p = 0.028 (n = 3, low power)
+ seed  piml_r2  piml_rmse   ml_r2  ml_rmse  rmse_gain_ml_minus_piml  piml_skill  ml_skill
+   42  0.99958    0.00041 0.99968  0.00036                 -0.00005    -0.83307  -0.42832
+   43  0.99948    0.00046 0.99967  0.00037                 -0.00009    -1.27393  -0.47336
+   44  0.99948    0.00046 0.99964  0.00038                 -0.00008    -1.29366  -0.57785
+
+PIML: R² 0.9995 ± 0.0001 | skill -1.13
+ML  : R² 0.9997 ± 0.0000 | skill -0.49
+Paired RMSE (ML − PIML) = -0.00007; paired t = 5.86, p = 0.028 (n = 3, low power)
+Parameters → PINN 76,801 | LSTM 56,961
+  (resumed)  LSTM-current  seed 42: val RMSE=0.00054 | test R²=0.9997  RMSE=0.00036  (0s)
+  (resumed)  LSTM-current  seed 43: val RMSE=0.00063 | test R²=0.9994  RMSE=0.00050  (0s)
+  (resumed)  LSTM-current  seed 44: val RMSE=0.00088 | test R²=0.9996  RMSE=0.00043  (0s)
+  (resumed)  LSTM-history  seed 42: val RMSE=0.00060 | test R²=0.9994  RMSE=0.00048  (0s)
+  (resumed)  LSTM-history  seed 43: val RMSE=0.00054 | test R²=0.9993  RMSE=0.00053  (0s)
+  (resumed)  LSTM-history  seed 44: val RMSE=0.00063 | test R²=0.9993  RMSE=0.00053  (0s)
+
+  Saved lstm_final.pt → LSTM-current, seed 42, val RMSE=0.00054, test R²=0.9997
+
+  ── LSTM test summary (mean ± SD over seeds) ──
+  LSTM-current : R² = 0.9995 ± 0.0002 | RMSE = 0.00043 ± 0.00007
+  LSTM-history : R² = 0.9993 ± 0.0001 | RMSE = 0.00051 ± 0.00003
+  Persistence    : R² = 0.9998 | RMSE = 0.00030
+  [Dev107] 116,733 raw rows | 462 duplicates | warm-up 0 rows | 56,991 measured 2-min points (6,935 filled-in points dropped, 11,309 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev107] rain 651 mm | max 30-min depth 27.0 mm | θ 0.183–0.463 | 281 segments, longest gap 93.8 d
+  test window 2026-09-12 20:28 -> 2026-09-29 07:56 | Dev107 test points 9,276
+ seed  piml_r2  piml_rmse   ml_r2  ml_rmse  rmse_gain_ml_minus_piml  piml_skill  ml_skill
+   42  0.99958    0.00041 0.99968  0.00036                 -0.00005    -0.83307  -0.42832
+   43  0.99948    0.00046 0.99967  0.00037                 -0.00009    -1.27393  -0.47336
+   44  0.99948    0.00046 0.99964  0.00038                 -0.00008    -1.29366  -0.57785
+
+PIML: R² 0.9995 ± 0.0001 | skill -1.13
+ML  : R² 0.9997 ± 0.0000 | skill -0.49
+Paired RMSE (ML − PIML) = -0.00007; paired t = 5.86, p = 0.028 (n = 3, low power)
+PIML R²=0.9996 RMSE=0.00041 | ML R²=0.9997 RMSE=0.00036
+ seed  piml_r2  piml_rmse   ml_r2  ml_rmse  rmse_gain_ml_minus_piml  piml_skill  ml_skill
+   42  0.99958    0.00041 0.99968  0.00036                 -0.00005    -0.83307  -0.42832
+   43  0.99948    0.00046 0.99967  0.00037                 -0.00009    -1.27393  -0.47336
+   44  0.99948    0.00046 0.99964  0.00038                 -0.00008    -1.29366  -0.57785
+
+PIML: R² 0.9995 ± 0.0001 | skill -1.13
+ML  : R² 0.9997 ± 0.0000 | skill -0.49
+Paired RMSE (ML − PIML) = -0.00007; paired t = 5.86, p = 0.028 (n = 3, low power)
+
+Target = smoothed (as trained) vs raw sensor reading:
+                    model  r2_smoothed  rmse_smoothed  r2_raw  rmse_raw
+Persistence (lag-1 input)      0.99977        0.00030 0.99912   0.00060
+          PIML (main run)      0.99959        0.00041 0.99910   0.00060
+            ML (main run)      0.99968        0.00036 0.99915   0.00059
+Parameters → PINN 76,801 | LSTM 56,961
+  (resumed)  LSTM-current  seed 42: val RMSE=0.00054 | test R²=0.9997  RMSE=0.00036  (0s)
+  (resumed)  LSTM-current  seed 43: val RMSE=0.00063 | test R²=0.9994  RMSE=0.00050  (0s)
+  (resumed)  LSTM-current  seed 44: val RMSE=0.00088 | test R²=0.9996  RMSE=0.00043  (0s)
+  (resumed)  LSTM-history  seed 42: val RMSE=0.00060 | test R²=0.9994  RMSE=0.00048  (0s)
+  (resumed)  LSTM-history  seed 43: val RMSE=0.00054 | test R²=0.9993  RMSE=0.00053  (0s)
+  (resumed)  LSTM-history  seed 44: val RMSE=0.00063 | test R²=0.9993  RMSE=0.00053  (0s)
+
+  Saved lstm_final.pt → LSTM-current, seed 42, val RMSE=0.00054, test R²=0.9997
+
+  ── LSTM test summary (mean ± SD over seeds) ──
+  LSTM-current : R² = 0.9995 ± 0.0002 | RMSE = 0.00043 ± 0.00007
+  LSTM-history : R² = 0.9993 ± 0.0001 | RMSE = 0.00051 ± 0.00003
+  Persistence    : R² = 0.9998 | RMSE = 0.00030
+  Main run (seed 42) PIML: R² = 0.9996 | RMSE = 0.00041
+  Main run (seed 42) ML  : R² = 0.9997 | RMSE = 0.00036
+  [Dev107] 116,733 raw rows | 462 duplicates | warm-up 0 rows | 56,991 measured 2-min points (6,935 filled-in points dropped, 11,309 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev107] rain 651 mm | max 30-min depth 27.0 mm | θ 0.183–0.463 | 281 segments, longest gap 93.8 d
+  test window 2026-09-12 20:28 -> 2026-09-29 07:56 | Dev107 test points 9,276
+  [Dev107] 116,733 raw rows | 462 duplicates | warm-up 0 rows | 56,991 measured 2-min points (6,935 filled-in points dropped, 11,309 short-outage points held as inputs only) | 2025-11-01 -> 2026-09-29
+  [Dev107] rain 651 mm | max 30-min depth 27.0 mm | θ 0.183–0.463 | 281 segments, longest gap 93.8 d
+  test window 2026-09-12 20:28 -> 2026-09-29 07:56 | Dev107 test points 9,276
+
+  N =  3 days of Dev107 data (2026-09-10 -> 2026-09-12, 1,790 samples)
+    recal: θ = 1.007·θ̂ + -0.0018 | test RMSE 0.00103
+    head_pinn          seed 42: test RMSE 0.00109 | skill -0.31 | PDE res 1.36e-06 | 650 steps [0 min]
+    head_pinn          seed 43: test RMSE 0.00106 | skill -0.25 | PDE res 1.29e-06 | 1000 steps [1 min]
+    head_pinn          seed 44: test RMSE 0.00107 | skill -0.26 | PDE res 1.35e-06 | 650 steps [1 min]
+    full_pinn          seed 42: test RMSE 0.00200 | skill -3.41 | PDE res 6.96e-07 | 1750 steps [2 min]
+    full_pinn          seed 43: test RMSE 0.00185 | skill -2.80 | PDE res 5.42e-07 | 1650 steps [2 min]
+    full_pinn          seed 44: test RMSE 0.00187 | skill -2.89 | PDE res 5.84e-07 | 1750 steps [3 min]
+    full_data_only     seed 42: test RMSE 0.00206 | skill -3.69 | PDE res 2.41e-02 | 1750 steps [3 min]
+    full_data_only     seed 43: test RMSE 0.00229 | skill -4.81 | PDE res 3.39e-02 | 2000 steps [3 min]
+    full_data_only     seed 44: test RMSE 0.00213 | skill -4.01 | PDE res 3.21e-02 | 2000 steps [4 min]
+    scratch_pinn       seed 42: test RMSE 0.00296 | skill -8.73 | PDE res 2.58e-05 | 1050 steps [4 min]
+    scratch_pinn       seed 43: test RMSE 0.00343 | skill -12.06 | PDE res 1.83e-04 | 700 steps [4 min]
+    scratch_pinn       seed 44: test RMSE 0.00307 | skill -9.46 | PDE res 1.14e-04 | 700 steps [5 min]
+    scratch_data_only  seed 42: test RMSE 0.00975 | skill -104.31 | PDE res 1.79e-01 | 750 steps [5 min]
+    scratch_data_only  seed 43: test RMSE 0.01011 | skill -112.23 | PDE res 2.44e-01 | 650 steps [5 min]
+    scratch_data_only  seed 44: test RMSE 0.00719 | skill -56.38 | PDE res 7.25e-02 | 700 steps [5 min]
+
+  N =  7 days of Dev107 data (2026-09-06 -> 2026-09-12, 4,302 samples)
+    recal: θ = 1.008·θ̂ + -0.0023 | test RMSE 0.00103
+    head_pinn          seed 42: test RMSE 0.00106 | skill -0.24 | PDE res 1.36e-06 | 600 steps [5 min]
+    head_pinn          seed 43: test RMSE 0.00106 | skill -0.26 | PDE res 1.34e-06 | 550 steps [5 min]
+    head_pinn          seed 44: test RMSE 0.00106 | skill -0.25 | PDE res 1.36e-06 | 600 steps [6 min]
+    full_pinn          seed 42: test RMSE 0.00147 | skill -1.39 | PDE res 1.53e-04 | 600 steps [6 min]
+    full_pinn          seed 43: test RMSE 0.00150 | skill -1.51 | PDE res 1.61e-04 | 600 steps [6 min]
+    full_pinn          seed 44: test RMSE 0.00153 | skill -1.61 | PDE res 1.64e-04 | 600 steps [6 min]
+    full_data_only     seed 42: test RMSE 0.00116 | skill -0.48 | PDE res 5.26e-01 | 950 steps [6 min]
+    full_data_only     seed 43: test RMSE 0.00108 | skill -0.29 | PDE res 5.59e-01 | 1250 steps [7 min]
+    full_data_only     seed 44: test RMSE 0.00126 | skill -0.77 | PDE res 3.58e-01 | 850 steps [7 min]
+    scratch_pinn       seed 42: test RMSE 0.00616 | skill -41.10 | PDE res 7.12e-05 | 1350 steps [7 min]
+    scratch_pinn       seed 43: test RMSE 0.00560 | skill -33.77 | PDE res 9.77e-05 | 1400 steps [8 min]
+    scratch_pinn       seed 44: test RMSE 0.00572 | skill -35.23 | PDE res 9.61e-05 | 1450 steps [8 min]
+    scratch_data_only  seed 42: test RMSE 0.00570 | skill -35.02 | PDE res 6.94e-02 | 1350 steps [8 min]
+    scratch_data_only  seed 43: test RMSE 0.00637 | skill -43.99 | PDE res 1.07e-01 | 1400 steps [9 min]
+    scratch_data_only  seed 44: test RMSE 0.00619 | skill -41.41 | PDE res 8.03e-02 | 2000 steps [9 min]
+
+  N = 14 days of Dev107 data (2026-08-06 -> 2026-09-12, 7,676 samples)
+    recal: θ = 1.009·θ̂ + -0.0023 | test RMSE 0.00103
+    head_pinn          seed 42: test RMSE 0.00106 | skill -0.25 | PDE res 1.34e-06 | 550 steps [9 min]
+    head_pinn          seed 43: test RMSE 0.00106 | skill -0.24 | PDE res 1.34e-06 | 550 steps [9 min]
+    head_pinn          seed 44: test RMSE 0.00105 | skill -0.23 | PDE res 1.34e-06 | 550 steps [9 min]
+    full_pinn          seed 42: test RMSE 0.00124 | skill -0.71 | PDE res 1.49e-04 | 1000 steps [10 min]
+    full_pinn          seed 43: test RMSE 0.00127 | skill -0.79 | PDE res 1.41e-04 | 1000 steps [10 min]
+    full_pinn          seed 44: test RMSE 0.00129 | skill -0.83 | PDE res 1.34e-04 | 1050 steps [11 min]
+    full_data_only     seed 42: test RMSE 0.00134 | skill -1.00 | PDE res 7.65e-01 | 700 steps [11 min]
+    full_data_only     seed 43: test RMSE 0.00128 | skill -0.81 | PDE res 5.48e-01 | 650 steps [11 min]
+    full_data_only     seed 44: test RMSE 0.00136 | skill -1.05 | PDE res 1.28e+00 | 650 steps [11 min]
+    scratch_pinn       seed 42: test RMSE 0.00627 | skill -42.62 | PDE res 8.59e-05 | 1500 steps [11 min]
+    scratch_pinn       seed 43: test RMSE 0.00609 | skill -40.12 | PDE res 1.32e-04 | 1550 steps [12 min]
+    scratch_pinn       seed 44: test RMSE 0.00562 | skill -34.07 | PDE res 2.22e-04 | 1700 steps [13 min]
+    scratch_data_only  seed 42: test RMSE 0.00610 | skill -40.20 | PDE res 7.69e-02 | 1300 steps [13 min]
+    scratch_data_only  seed 43: test RMSE 0.00594 | skill -38.14 | PDE res 9.14e-02 | 1500 steps [13 min]
+    scratch_data_only  seed 44: test RMSE 0.00571 | skill -35.09 | PDE res 1.34e-01 | 1700 steps [13 min]
+
+  N = 30 days of Dev107 data (2026-07-21 -> 2026-09-12, 13,295 samples)
+    recal: θ = 1.009·θ̂ + -0.0023 | test RMSE 0.00103
+    head_pinn          seed 42: test RMSE 0.00105 | skill -0.21 | PDE res 1.28e-06 | 1900 steps [14 min]
+    head_pinn          seed 43: test RMSE 0.00104 | skill -0.20 | PDE res 1.31e-06 | 1200 steps [14 min]
+    head_pinn          seed 44: test RMSE 0.00105 | skill -0.23 | PDE res 1.29e-06 | 2000 steps [15 min]
+    full_pinn          seed 42: test RMSE 0.00103 | skill -0.18 | PDE res 6.07e-07 | 1550 steps [16 min]
+    full_pinn          seed 43: test RMSE 0.00101 | skill -0.12 | PDE res 1.08e-06 | 1250 steps [16 min]
+    full_pinn          seed 44: test RMSE 0.00119 | skill -0.57 | PDE res 8.31e-07 | 950 steps [17 min]
+    full_data_only     seed 42: test RMSE 0.00102 | skill -0.16 | PDE res 1.28e-01 | 950 steps [17 min]
+    full_data_only     seed 43: test RMSE 0.00106 | skill -0.24 | PDE res 1.08e-01 | 1250 steps [17 min]
+    full_data_only     seed 44: test RMSE 0.00105 | skill -0.23 | PDE res 1.10e-01 | 950 steps [17 min]
+    scratch_pinn       seed 42: test RMSE 0.00250 | skill -5.91 | PDE res 1.17e-05 | 2000 steps [18 min]
+    scratch_pinn       seed 43: test RMSE 0.00235 | skill -5.10 | PDE res 2.87e-05 | 2000 steps [19 min]
+    scratch_pinn       seed 44: test RMSE 0.00245 | skill -5.66 | PDE res 3.67e-05 | 2000 steps [20 min]
+    scratch_data_only  seed 42: test RMSE 0.00239 | skill -5.33 | PDE res 1.81e-01 | 2000 steps [20 min]
+    scratch_data_only  seed 43: test RMSE 0.00237 | skill -5.20 | PDE res 1.82e-01 | 2000 steps [20 min]
+    scratch_data_only  seed 44: test RMSE 0.00249 | skill -5.88 | PDE res 9.14e-02 | 2000 steps [20 min]
+
+TRANSFER Dev108 -> Dev107 (mean over seeds; test = Dev108 test window)
+           strategy  n_days  test_rmse  test_rmse_sd     skill  test_rmse_raw  pde_residual  trainable  seeds
+     full_data_only       3    0.00216       0.00012  -4.16988        0.00249       0.03004      76801      3
+     full_data_only       7    0.00117       0.00009  -0.51456        0.00212       0.48107      76801      3
+     full_data_only      14    0.00133       0.00004  -0.95174        0.00223       0.86523      76801      3
+     full_data_only      30    0.00104       0.00002  -0.20993        0.00188       0.11559      76801      3
+          full_pinn       3    0.00191       0.00008  -3.03492        0.00228       0.00000      76801      3
+          full_pinn       7    0.00150       0.00003  -1.50347        0.00238       0.00016      76801      3
+          full_pinn      14    0.00127       0.00002  -0.78121        0.00222       0.00014      76801      3
+          full_pinn      30    0.00108       0.00010  -0.29137        0.00191       0.00000      76801      3
+          head_pinn       3    0.00107       0.00001  -0.27161        0.00195       0.00000         65      3
+          head_pinn       7    0.00106       0.00000  -0.24778        0.00196       0.00000         65      3
+          head_pinn      14    0.00106       0.00000  -0.24107        0.00195       0.00000         65      3
+          head_pinn      30    0.00105       0.00001  -0.21221        0.00194       0.00000         65      3
+        persistence       0    0.00095           NaN   0.00000        0.00213           NaN          0      1
+              recal       3    0.00103           NaN  -0.17545        0.00194           NaN          2      1
+              recal       7    0.00103           NaN  -0.17054        0.00194           NaN          2      1
+              recal      14    0.00103           NaN  -0.16749        0.00194           NaN          2      1
+              recal      30    0.00103           NaN  -0.16531        0.00194           NaN          2      1
+  scratch_data_only       3    0.00902       0.00159 -90.97387        0.00909       0.16525      76801      3
+  scratch_data_only       7    0.00609       0.00035 -40.14024        0.00624       0.08558      76801      3
+  scratch_data_only      14    0.00591       0.00020 -37.81087        0.00607       0.10065      76801      3
+  scratch_data_only      30    0.00242       0.00007  -5.46932        0.00279       0.15159      76801      3
+       scratch_pinn       3    0.00316       0.00025 -10.08461        0.00329       0.00011      76801      3
+       scratch_pinn       7    0.00583       0.00030 -36.69946        0.00599       0.00009      76801      3
+       scratch_pinn      14    0.00600       0.00033 -38.93644        0.00614       0.00015      76801      3
+       scratch_pinn      30    0.00243       0.00008  -5.55636        0.00280       0.00003      76801      3
+          zero_shot       0    0.00111           NaN  -0.37138        0.00198       0.00000          0      1
+zero_shot_data_only       0    0.00104           NaN  -0.19895        0.00193       0.14095          0      1
+
+Paired differences in test RMSE (same N and seed; < 0 favours the first):
+  full_pinn − scratch_pinn, N= 3: -0.00125 ± 0.00077 (differs)
+  full_pinn − scratch_pinn, N= 7: -0.00432 ± 0.00080 (differs)
+  full_pinn − scratch_pinn, N=14: -0.00473 ± 0.00088 (differs)
+  full_pinn − scratch_pinn, N=30: -0.00135 ± 0.00026 (differs)
+  full_data_only − scratch_data_only, N= 3: -0.00686 ± 0.00385 (differs)
+  full_data_only − scratch_data_only, N= 7: -0.00492 ± 0.00093 (differs)
+  full_data_only − scratch_data_only, N=14: -0.00459 ± 0.00053 (differs)
+  full_data_only − scratch_data_only, N=30: -0.00137 ± 0.00016 (differs)
+  full_pinn − full_data_only, N= 3: -0.00025 ± 0.00047 (n.s.)
+  full_pinn − full_data_only, N= 7: +0.00034 ± 0.00020 (differs)
+  full_pinn − full_data_only, N=14: -0.00006 ± 0.00012 (n.s.)
+  full_pinn − full_data_only, N=30: +0.00003 ± 0.00024 (n.s.)
+  scratch_pinn − scratch_data_only, N= 3: -0.00586 ± 0.00374 (differs)
+  scratch_pinn − scratch_data_only, N= 7: -0.00026 ± 0.00160 (n.s.)
+  scratch_pinn − scratch_data_only, N=14: +0.00008 ± 0.00035 (n.s.)
+  scratch_pinn − scratch_data_only, N=30: +0.00002 ± 0.00020 (n.s.)
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_transfer_108_to_107.png
+ALERT-STREAM SUMMARY  (final main-run PIML; T_L per Eq. 17, causal)
+====================================================================
+analysed steps n              : 58,518 of 78,086
+monitored coverage           : 110.7 days
+FoS in analysed record       : min 1.590 | mean 1.694
+GREEN / YELLOW / RED (%)     : 99.66 / 0.23 / 0.11
+RED samples / YELLOW samples : 65 / 136
+non-capped T_L steps         : 1,580 (2.7% of record)
+median non-capped T_L        : 24.84 h
+minimum T_L                  : 0.25 h at 2026-09-09 09:30:00
+
+EPISODE COUNTS (analysed record)
+raw RED episodes             : 31
+raw non-GREEN episodes       : 69
+confirmed escalations        : 33
+debounced RED episodes       : 23
+
+SHOWCASE EVENTS (debounced policy)
+  Ev1 (10 Nov)    : no RED     raw RED runs (samples) = []
+  Ev2 (18-19 Nov) : RED issued raw RED runs (samples) = [2]
+  Ev3 (24-25 Jan) : RED issued raw RED runs (samples) = [3]
+
+Debounce policies:
+                                                               policy  red_episodes  reduction_vs_raw_pct Ev1 (10 Nov) Ev2 (18-19 Nov) Ev3 (24-25 Jan)  max_confirmation_delay_min
+                                                Raw single-sample RED            31              0.000000   no raw RED       preserved       preserved                         0.0
+                                              RED persistence, 2-of-3            18             41.935484   no raw RED       preserved       preserved                         2.0
+                                              RED persistence, 3-of-5            10             67.741935   no raw RED      suppressed       preserved                         4.0
+Adopted: 2-of-3 escalation + single-sample RED (30-min GREEN release)            23             25.806452   no raw RED       preserved       preserved                         0.0
+  → Saved: /content/drive/MyDrive/PINN-LEWS-HYDROL86065_results/chrono/fig_alert_stream.png

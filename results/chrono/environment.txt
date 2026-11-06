@@ -1,0 +1,98 @@
+date        2026-11-02 01:23
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+numpy       2.1.3
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+
+date        2026-11-02 09:07
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.18  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cpu  cuda=False
+numpy       2.1.3
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+
+date        2026-11-02 09:08
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.18  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cpu  cuda=False
+numpy       2.1.3
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+
+date        2026-11-03 01:27
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+numpy       2.4.6
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+
+date        2026-11-03 03:34
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.18  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cpu  cuda=False
+numpy       2.4.6
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+
+date        2026-11-03 04:14
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+numpy       2.4.6
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+
+date        2026-11-03 09:07
+run         d5w128tanhT_lp0.1_bc0_chrono_fy  quick_test=False
+python      3.13.16  (Linux-6.6.159+-x86_64-with-glibc2.39)
+torch       2.11.0+cu130  cuda=True  gpu=Tesla T4
+numpy       2.4.6
+pandas      2.2.3
+scipy       1.16.3
+sklearn     1.6.1
+matplotlib  3.10.0
+data 108    sha256 dcbd17de2429541329844714af57770d64d40001d31f98cd70b54f7f82eb4a74
+data 107    sha256 cbb4776490a5816119265a774afccab28be05badf8a7e3217a27b0682e5f2212
+budget      {'main_adam': 400, 'main_lbfgs': 200, 'sens_adam': 130, 'sens_lbfgs': 70, 'seeds': [42, 43, 44], 'tl_steps': 2000, 'tl_eval': 50}
+optional    {'sens_grid': True, 'bc_scen': True, 'lstm': True, 'transfer': True, 'alerts': True, 'arch_search': False, 'lam_ext': False}
+

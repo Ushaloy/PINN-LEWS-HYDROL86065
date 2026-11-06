@@ -1,0 +1,2 @@
+split,model,test_rmse,test_r2,skill,test_rmse_raw,n,runtime_s
+season,Richards solver (free),0.035307608249430016,0.7312437439175823,-852.1130753589299,0.03537735386001066,36333,25.25646662712097

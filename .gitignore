@@ -1,0 +1,6 @@
+# quick-test outputs are not results
+results/quicktest_*/
+*.zip
+.ipynb_checkpoints/
+__pycache__/
+results_rerun/

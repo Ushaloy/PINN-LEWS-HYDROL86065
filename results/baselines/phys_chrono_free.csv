@@ -1,0 +1,2 @@
+split,model,test_rmse,test_r2,skill,test_rmse_raw,n,runtime_s
+chrono,Richards solver (free),0.01154712103062062,0.6687710186436555,-1459.4215614609839,0.011565974943101826,7804,5.25308632850647
