@@ -1,0 +1,13 @@
+﻿Quantity,Dev108,Dev107
+Raw records,"144,847","116,733"
+Duplicate time stamps removed,612,462
+Warm-up records removed,268,0
+Logger-infill values removed (2-min grid),"5,253","6,935"
+Measured 2-min points,"79,746","56,991"
+Held points (inputs only),"24,378","11,309"
+Days with data,193,129
+Continuous segments,383,281
+Longest outage (d),35.2,93.8
+Total rain (mm),821,651
+Largest 30-min rain (mm),37.9,27.0
+θ range (m3 m-3),0.204–0.540,0.183–0.463

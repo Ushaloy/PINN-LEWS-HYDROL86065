@@ -1,0 +1,7 @@
+﻿"Lower boundary, IC, lambda_LBC",Condition met,Validation RMSE (x1e-3),d_theta at 0.30 m,d_theta at 0.50 m,"Min FoS, test window (theta at 0.30 m / 0.50 m)"
+"Free drainage, sensor, 0.1 (final)",yes,0.95 ± 0.11,–,–,1.662 / 1.662
+"Free drainage, uniform, 0.1",yes,0.95 ± 0.11,0.0000,0.0000,1.662 / 1.662
+"No-flux, sensor, 1",yes,5.22 ± 0.81,0.0038,0.0140,1.672 / 1.684
+"No-flux, sensor, 10",yes,4.87 ± 0.27,0.0030,0.0179,1.667 / 1.691
+"Water table, sensor, 1",no,8.86 ± 1.42,0.0067,0.0122,1.656 / 1.657
+"Water table, sensor, 10",no (2 of 3 seeds),34.70 ± 28.60,0.0254,0.0829,1.686 / 1.652

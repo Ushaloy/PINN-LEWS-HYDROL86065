@@ -1,0 +1,11 @@
+﻿Model,"RMSE, chronological",R2,Skill,RMSE vs raw,"RMSE, out-of-season","Skill, out-of-season",Richards residual
+Persistence,0.302,0.9998,0.00,0.597,1.21,0.00,–
+ARX (ridge),0.308,0.9998,-0.04,0.585,1.23,-0.03,–
+Random forest,0.409 ± 0.004,0.9996,-0.83,0.638,8.55 ± 0.02,-49.00,–
+Gradient boosting,0.436 ± 0.021,0.9995,-1.08,0.630,8.73 ± 0.05,-51.21,–
+LSTM (current R),0.429 ± 0.070,0.9995,-1.01,–,–,–,–
+LSTM (R history),0.513 ± 0.029,0.9993,-1.88,–,–,–,–
+Data-only network,0.369 ± 0.009,0.9997,-0.49,0.586,2.41 ± 0.54,-2.96,0.83
+PIML (this study),0.441 ± 0.027,0.9995,-1.13,0.601,3.16 ± 0.68,-5.85,2.7e-06
+"Richards solver, IoT update every step",0.302,0.9998,-0.00,0.597,1.21,-0.00,0*
+"Richards solver, no IoT update",11.547,0.6688,-1459.42,11.566,35.3,-852.11,0*

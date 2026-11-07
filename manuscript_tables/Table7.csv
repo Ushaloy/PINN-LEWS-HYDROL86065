@@ -1,0 +1,11 @@
+﻿Quantity,Value
+Analysed samples / monitored days,"58,518 / 110.7"
+FoS in analysed record (min / mean),1.590 / 1.694
+GREEN / YELLOW / RED (% of samples),99.66 / 0.23 / 0.11
+Median lead time when FoS is falling / minimum lead time (h),24.8 / 0.25
+Raw RED episodes / confirmed escalations,31 / 33
+RED-alert policy,"RED alerts (reduction vs raw); storms 18-19 Nov, 24-25 Jan; max. delay"
+Raw single-sample RED,"31 (–); kept, kept; 0 min"
+"RED persistence, 2 of 3","18 (42%); kept, kept; 2 min"
+"RED persistence, 3 of 5","10 (68%); suppressed, kept; 4 min"
+Adopted: 2-of-3 escalation + single RED sample,"23 (26%); kept, kept; 0 min"

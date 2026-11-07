@@ -1,0 +1,9 @@
+﻿Strategy (trained parameters),3 d,7 d,14 d,30 d
+Recalibration (2),1.030,1.028,1.026,1.025
+"Last layer, physics (65)",1.071,1.061,1.058,1.046
+"All layers, physics (76,801)",1.907,1.503,1.267,1.076
+"All layers, data-only (76,801)",2.157,1.166,1.326,1.045
+"From scratch, physics (76,801)",3.156,5.827,5.996,2.431
+"From scratch, data-only (76,801)",9.016,6.085,5.915,2.415
+ARX from scratch (16),1.096,1.051,1.051,1.050
+Random forest from scratch,3.117,3.034,2.814,1.969

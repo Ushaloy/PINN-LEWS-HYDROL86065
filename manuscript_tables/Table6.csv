@@ -1,0 +1,9 @@
+﻿Strategy (trained parameters),Utuado 0 d,Utuado 3 d,Utuado 7 d,Utuado 14 d,Utuado 30 d,California 0 d,California 3 d,California 7 d,California 14 d,California 30 d
+"Zero-shot, physics (0)",6.51,–,–,–,–,14.78,–,–,–,–
+"Zero-shot, data-only (0)",6.48,–,–,–,–,6.71,–,–,–,–
+Recalibration (2),–,7.10,6.42,7.23,5.54,–,9.45,8.72,7.37,8.05
+"Last layer, physics (65)",–,6.37,6.62,7.45,5.51,–,8.87,8.48,7.95,8.05
+"All layers, physics (76,801)",–,8.15,7.00,5.48,5.06,–,10.45,10.23,18.18,4.02
+"All layers, data-only (76,801)",–,6.61,5.45,4.37,4.77,–,10.47,7.76,10.46,2.69
+"From scratch, physics (76,801)",–,8.37,8.62,6.16,5.18,–,10.81,12.65,10.88,4.74
+"From scratch, data-only (76,801)",–,14.15,11.95,10.52,6.49,–,10.81,12.69,10.88,4.28
